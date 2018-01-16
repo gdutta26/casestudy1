@@ -6,5 +6,5 @@ applications:
   name: DreamHome-Node-Cloudant-cs3
   host: DreamHome-Node-Cloudant-cs3
   disk_quota: 1024M
-  services:
-  - Node-Cloudant-Demo-cloudantNoSQLDB
+ 
+
