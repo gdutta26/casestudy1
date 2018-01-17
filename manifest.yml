@@ -3,8 +3,8 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: DreamHome-Node-Cloudant-cs3
-  host: DreamHome-Node-Cloudant-cs3
+  name: DreamHome-Node-Cloudant-cs31
+  host: DreamHome-Node-Cloudant-cs31
   disk_quota: 1024M
  
 
