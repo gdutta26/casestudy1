@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="stylesheets/style.css">
   </head>
 
-  <body>
+  <body ng-app = "myApp">
   
 	<table style= "margin-top: 100">
 		
@@ -32,6 +32,13 @@
           &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 		  City: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input placeholder="City" type='text' name='city' id='city'  maxlength="50" /></br>
 		  
+		  <div ng-controller = "myCtrl">
+      	<label>Upload Node Graph XML  File here: </label>  <input type = "file" file-model = "myNodeGraphXML" ><br>
+         <!-- onchange="angular.element(this).scope().uploadFile(this)" / > -->
+         <button ng-click = "uploadFile()">upload me</button>
+     	 </div>
+		  
+		  
 		  </form> 
 		  
 		  
@@ -45,6 +52,57 @@
       </tr>
     </table>
 	<script type="text/javascript" src="./scripts/index.js"></script>
+	 <script>
+         var myApp = angular.module('myApp', []);
+         
+         myApp.directive('fileModel', ['$parse', function ($parse) {
+            return {
+               restrict: 'A',
+               link: function(scope, element, attrs) {
+                  var model = $parse(attrs.fileModel);
+                  var modelSetter = model.assign;                  
+                  element.bind('change', function(){
+                     scope.$apply(function(){
+                        modelSetter(scope, element[0].files[0]);
+
+                     });
+                  });
+               }
+            };
+         }]);
+      
+
+         myApp.service('fileUpload', ['$http', function ($http) {
+            this.uploadFileToUrl = function(fileTxt, uploadUrl){
+               var fd = new FormData();
+               fd.append('nodegGraph', fileTxt);
+               $http.post(uploadUrl, fd, {
+                  transformRequest: angular.identity,
+                  headers: {'Content-Type': undefined}
+               })
+            
+               .success(function(data) {
+                   
+                 })
+            
+               .error(function(){
+               });
+            }
+         }]);
+      
+         myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
+            $scope.uploadFile = function(element){
+                var nodeGraph=$scope.myNodeGraphXML;
+	            //var uploadUrl = "http://localhost:8080/PostProcessor/api/file/processFile"; //put api url here 
+				//var uploadUrl = "https://postprocessors.mybluemix.net/api/file/processFile"; 
+				var uploadUrl ="https://postprocessors.mybluemix.net/api/file/processNLP";
+                fileUpload.uploadFileToUrl(nodeGraph,uploadUrl);
+
+
+            };
+         }]);
+			
+      </script>	
   </body>
 
 </html>
