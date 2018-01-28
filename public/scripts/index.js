@@ -45,6 +45,11 @@ function addUser() {
 	
 }
 
+function uploadFile(){
+	
+	alert("file is not uploaded");
+}
+
 function fetchUser() {
 	//location.reload();
 	var xhttp = new XMLHttpRequest();
