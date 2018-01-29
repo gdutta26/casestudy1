@@ -1,5 +1,6 @@
 var services = require("../service/node_cloudant_service");
 var bodyParser  = require("body-parser");
+var multer = require("multer");
 
 
 
