@@ -26,7 +26,8 @@ module.exports = function(app) {
             });            
     });
     
-    router.post('/emailnotificationCron/attachmentUpload', multer({
+    //router.post('/emailnotificationCron/attachmentUpload', multer({
+    	 app.post('/emailnotificationCron/attachmentUpload', multer({
         dest: path.join(__dirname, '../attachment'),
         rename: function (fieldname, filename) {
             return filename;
