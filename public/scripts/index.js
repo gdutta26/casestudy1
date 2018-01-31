@@ -48,6 +48,12 @@ function addUser() {
 function uploadFile(){
 	
 	alert("file is not uploaded");
+	var requestJson = {};
+	requestJson.originalname = document.getElementById('originalname').value;
+	requestJson.destination = document.getElementById('destination').value;
+	console.log("==========================");
+	console.log(requestJson);
+	
 }
 
 function fetchUser() {

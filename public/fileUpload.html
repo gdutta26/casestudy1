@@ -23,25 +23,12 @@
 		
       <tr style= "width:100%;">
         <td>
-		  <form name="fileupload">
-		  
-          Title: <input placeholder="Title" type='text' name='title' id='title'  maxlength="50" />
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-		  Description:    <input placeholder="Description" type='text' name='description' id='description'  maxlength="50" /></br>
-          Company: &nbsp <input placeholder="Company" type='text' name='company' id='company'  maxlength="50" />
-          &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-		  City: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input placeholder="City" type='text' name='city' id='city'  maxlength="50" /></br>
-		  
-		  <div ng-controller = "myCtrl">
-      	<label>Select File here: </label>  <input type = "file" file-model = "myNodeGraphXML" ><br>
-         <!-- onchange="angular.element(this).scope().uploadFile(this)" / > -->
-        <!--  <button ng-click = "uploadFile()">upload me</button> -->
-         <button class="addBtn" onclick="uploadFile()">Add User</button>
-     	 </div>
-		  
-		  
-		  </form> 
-		  
+							  <form action="/" enctype="multipart/form-data" method="post">
+					      <input type="text" name="title">
+					      <input type="file" name="upload">
+					        <input type="submit" value="Upload">
+					    </form>
+							  
 		  
         </td>
       </tr>
