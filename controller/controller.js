@@ -60,6 +60,52 @@ module.exports = function(app) {
     }),function(request1, response1) {
     }); */
     
+	var saveAttachmentToDB = function(docId,filePath, fileName,rev){
+    var deferred = Q.defer();
+    var fileSize;
+    var directories = [filePath, fileName];
+    var directory = directories.join(path.sep);
+    fs.stat(directory, function(error, stats){
+        fileSize = stats["size"];
+    });
+    var mimetype = mime.lookup(fileName);
+    fs.readFile(filePath+"/"+fileName, function (err, dataObj) {
+        var newPath = config1.cloudantURIDB
+        + docId
+        + '/'
+        + fileName
+        + '?rev='
+        + rev;
+        var queryOptionNxt = {
+                url : newPath,
+                body : dataObj,
+                headers : {
+                    'Accept' : 'application/json',
+                    'Content-Type' : mimetype,
+                    'Content-Length': fileSize
+                },
+                method : 'PUT'
+        };
+        request(queryOptionNxt,
+                function(err,resp,text) {
+            if (!err) {
+                deferred.resolve({"msg" : "Success"});
+            }
+            if((JSON.parse(text)).error != "bad_request"){
+                var revision = JSON.parse(text);
+                deferred.resolve({"msg" : "Success"});
+            }else{
+                deferred.resolve(
+                        {
+                            "msg" : "Fail"
+                        });
+            }
+        });
+    });
+    return deferred.promise;
+};
+	
+	
 	app.post('/emailnotificationCron/attachmentUpload', multer({
 		dest: __dirname+ '/attachment',
         rename: function (fieldname, filename) {
