@@ -62,7 +62,8 @@ module.exports = function(app) {
     }),function(request1, response1) {
     }); */
 	
-	
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 	app.post('/emailnotificationCron/attachmentUpload', multer({
 		dest: __dirname+ '/attachment',
         rename: function (fieldname, filename) {
