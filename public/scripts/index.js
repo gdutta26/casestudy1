@@ -54,6 +54,24 @@ function uploadFile(){
 	console.log("==========================");
 	console.log(requestJson);
 	
+	
+	var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/emailnotificationCron/attachmentUpload", true);
+	xhttp.onreadystatechange = function(){
+		if(xhttp.readyState == 4){
+			console.log(xhttp);
+			
+			if(xhttp.status == 200){
+				document.forms['uploadfile'].reset()
+				alert("File uploaded successfully");
+			}else{
+				alert("Failed to upload file. Try again");
+			}
+		}
+	};
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(requestJson));
+	
 }
 
 function fetchUser() {
