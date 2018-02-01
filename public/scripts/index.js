@@ -56,7 +56,7 @@ function uploadFile(){
 	
 	
 	var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/emailnotificationCron/attachmentUpload", true);
+    xhttp.open("POST", "emailnotificationCron/attachmentUpload", true);
 	xhttp.onreadystatechange = function(){
 		if(xhttp.readyState == 4){
 			console.log(xhttp);
