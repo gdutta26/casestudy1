@@ -38,12 +38,12 @@ module.exports = function(app) {
 	}).single("myfile"),function(request1, response1) {
 		
 		var newfile = new NewFile({
-			fieldname: req.file.fieldname,
-		    originalname: req.file.originalname,
-		    destination:req.file.destination,
-		    filename: req.file.filename,
-		    path: req.file.path,
-		    size: req.file.size
+			fieldname: request1.file.fieldname,
+		    originalname: request1.file.originalname,
+		    destination:request1.file.destination,
+		    filename: request1.file.filename,
+		    path: request1.file.path,
+		    size: request1.file.size
 			
 		}) 
 		 newfile.save(function(err){

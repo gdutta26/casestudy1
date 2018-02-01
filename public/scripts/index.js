@@ -69,7 +69,7 @@ function uploadFile(){
 			}
 		}
 	};
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("Content-type", "multipart/form-data");
     xhttp.send(JSON.stringify(requestJson));
 	
 }
