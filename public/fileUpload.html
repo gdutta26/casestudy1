@@ -23,18 +23,21 @@
 		
       <tr style= "width:100%;">
         <td>
-			<form name="uploadfile" action="/" enctype="multipart/form-data" method="post">
-				 <input type="text" name="title">
-				 <input type="file" id="upload" name="upload">
-				 <button class="addBtn" onclick="uploadFile()">Upload File</button> 
+			<form  id="fileUploadForm" onsubmit="return uploadFile()">
+				 Title: <input placeholder="Title" type='text' name='title' id='title'  maxlength="50" />
+				 &nbsp &nbsp &nbsp &nbsp 
+				 Description: <input placeholder="Description" type='description' name='description' id='description'  maxlength="50" />
+				 &nbsp &nbsp &nbsp &nbsp &nbsp
+				 <input type="file" id="upload" name="upload"></br>
+				 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+				 <button  type="submit" class="addBtn" >Upload File</button> 
 			</form>
-							  
-		  
         </td>
       </tr>
 	  <tr style= "width:100%; ">
         <td style="text-align:center;">
 			<button class="addBtn" onclick="location.href='index.html'">Back</button>
+			<button class="addBtn" onclick="location.href='index.html'">Reset</button>
         </td>
       </tr>
     </table>

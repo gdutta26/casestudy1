@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>DreamHome Node Demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+
+  <body ng-app = "myApp">
+  
+	<table style= "margin-top: 100">
+		
+      <tr style= "width:100%; ">
+        <td style="text-align:center;">
+			<h1>DreamHome Node Demo</h1>
+        </td>
+      </tr>
+    </table>
+    <table id="searchTable" border="3" value="TEST">
+		
+      <tr style= "width:100%;">
+        <td>
+				 Title/Description: <input placeholder="Title" type='text' name='title' id='title'  maxlength="50" />
+        </td>
+      </tr>
+	  <tr style= "width:100%; ">
+        <td style="text-align:center;">
+			<button class="addBtn" onclick="searchFiles()">Search</button> 
+			<button class="addBtn" onclick="location.href='index.html'">back</button>
+        </td>
+      </tr>
+    </table>
+	<script type="text/javascript" src="./scripts/index.js"></script>
+	 
+  </body>
+
+</html>
